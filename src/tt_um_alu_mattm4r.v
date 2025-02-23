@@ -18,7 +18,6 @@ module tt_um_alu_mattm4r (
     assign a = ui_in[3:0];
     assign b = ui_in[7:4];
     assign select = uio_in[1:0];
-    assign uio_in[7:2] = 6'b0;
 
     // ALU Outputs
     reg [3:0] out;
@@ -52,7 +51,7 @@ end
     assign uio_out = 8'b0;   // All output pins must be assigned. If not used, assign 
     assign uio_oe = 8'b0; // Only enable the relevant outputs
     // List all unused inputs to prevent warnings
-    wire _unused = &{ena, clk, rst_n, 1'b0};
+    wire _unused = &{ena, clk, rst_n, 1'b0, uio_in[7:2]};
 
 endmodule
 
